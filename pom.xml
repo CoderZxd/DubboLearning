@@ -6,9 +6,15 @@
 
   <groupId>com.zxd.dubbo.learning</groupId>
   <artifactId>DubboLearning</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>dubbo-api</module>
+        <module>dubbo-consumer</module>
+        <module>dubbo-provider</module>
+    </modules>
 
-  <name>DubboLearning</name>
+    <name>DubboLearning</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 

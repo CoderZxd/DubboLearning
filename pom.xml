@@ -77,10 +77,16 @@
       <artifactId>dubbo</artifactId>
       <version>2.5.3</version>
     </dependency>
-    <dependency>
+<!--    <dependency>
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
       <version>3.4.9</version>
-    </dependency>
+    </dependency>-->
+      <!-- zookeeper客户端 -->
+      <dependency>
+          <groupId>com.101tec</groupId>
+          <artifactId>zkclient</artifactId>
+          <version>0.10</version>
+      </dependency>
   </dependencies>
 </project>

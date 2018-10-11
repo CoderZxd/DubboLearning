@@ -17,5 +17,10 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.zxd.dubbo.learning</groupId>
+            <artifactId>dubbo-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

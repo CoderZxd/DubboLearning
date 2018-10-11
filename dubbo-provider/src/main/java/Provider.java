@@ -15,7 +15,7 @@ public class Provider {
     public static void main(String[] args) throws IOException {
 
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:dubbo-provider.xml");
-
+        System.out.println(classPathXmlApplicationContext.getApplicationName()+":"+classPathXmlApplicationContext.getDisplayName());
         classPathXmlApplicationContext.start();
         System.out.println("Dubbo provider started!");
         // 阻塞当前进程，否则程序会直接停止

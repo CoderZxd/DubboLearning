@@ -17,6 +17,7 @@ public class Consumer {
         ClassPathXmlApplicationContext classPathXmlApplicationContext =
                 new ClassPathXmlApplicationContext("classpath:dubbo-consumer.xml");
         classPathXmlApplicationContext.start();
+        System.out.println("Consumer started!");
         DemoService demoService = classPathXmlApplicationContext.getBean("demoService",DemoService.class);
         String returnvalue = demoService.sayHello("CoderZZ");
         System.out.println(returnvalue);

@@ -8,16 +8,19 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!--dubbo应用程序命名-->
-    <dubbo:application name="dubbo-demo-provider"/>
+    <!--定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识-->
+    <dubbo:application name="dubbo-demo-provider" owner="CoderZZ"/>
 
     <!--dubbo注册地址-->
     <dubbo:registry address="zookeeper://localhost:2181"/>
 
     <!--dubbo协议地址-->
+    <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!--接口声明-->
-    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoService"/>
+    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl"/>
 
-    <bean id="demoService" class="com.zxd.dubbo.learning.provider.DemoServiceImpl"/>
+    <!--具体实现该接口的 bean-->
+    <bean id="demoServiceImpl" class="com.zxd.dubbo.learning.provider.DemoServiceImpl"/>
 </beans>

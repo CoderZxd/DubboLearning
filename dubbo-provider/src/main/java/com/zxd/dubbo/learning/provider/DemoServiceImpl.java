@@ -25,4 +25,18 @@ public class DemoServiceImpl implements DemoService{
     public String sayHello(String param) {
         return "Hello "+param;
     }
+
+    /**
+     * class_name: sayGoodbye
+     * param: [param]
+     * describe: TODO
+     * creat_user: CoderZZ
+     * creat_date: 2018-10-12
+     * creat_time: 0:27
+     *
+     * @param param
+     */
+    public String sayGoodbye(String param) {
+        return "Goodbey "+param;
+    }
 }

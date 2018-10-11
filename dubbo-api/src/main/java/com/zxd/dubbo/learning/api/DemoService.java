@@ -20,4 +20,15 @@ public interface DemoService {
      * creat_time: 23:06
      **/
     String sayHello(String param);
+
+
+    /**
+     * class_name: sayGoodbye
+     * param: [param]
+     * describe: TODO
+     * creat_user: CoderZZ
+     * creat_date: 2018-10-12
+     * creat_time: 0:27
+     **/
+    String sayGoodbye(String param);
 }

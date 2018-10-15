@@ -19,7 +19,7 @@
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!--接口声明-->
-    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl"/>
+    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" />
 
     <!--具体实现该接口的 bean-->
     <bean id="demoServiceImpl" class="com.zxd.dubbo.learning.provider.DemoServiceImpl"/>

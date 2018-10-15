@@ -54,4 +54,7 @@
     <!--缺省只对第一个参数 Hash，如果要修改，请配置 <dubbo:parameter key="hash.arguments" value="0,1" />-->
     <!--缺省用 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />-->
     <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random"/>
+
+    <!--如果是线上需求需要点对点，可在 <dubbo:reference> 中配置 url 指向提供者，将绕过注册中心，多个地址用分号隔开-->
+    <!--<dubbo:reference id="demoService" interface="com.zxd.dubbo.learning.api.DemoService" url="dubbo://localhost:20880"/>-->
 </beans>

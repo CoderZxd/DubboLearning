@@ -12,6 +12,9 @@
     <dubbo:application name="dubbo-demo-provider" owner="CoderZZ"/>
 
     <!--dubbo注册地址-->
+    <!--禁用注册配置-->
+    <!--<dubbo:registry address="zookeeper://localhost:2181" register="false" />-->
+    <!--<dubbo:registry address="zookeeper://localhost:2181?register=false" />-->
     <dubbo:registry address="zookeeper://localhost:2181"/>
 
     <!--dubbo协议地址-->

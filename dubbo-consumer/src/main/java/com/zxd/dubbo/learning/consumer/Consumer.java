@@ -1,5 +1,6 @@
 package com.zxd.dubbo.learning.consumer;
 
+import com.alibaba.dubbo.rpc.service.EchoService;
 import com.alibaba.dubbo.rpc.service.GenericService;
 import com.zxd.dubbo.learning.api.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -31,12 +32,19 @@ public class Consumer {
         System.out.println(demoService.sayGoodbye("CoderZZ"));
 
         /**
+         * 回声测试
+         */
+        EchoService echoService = (EchoService)demoService;
+        System.out.println("EchoService:"+echoService.$echo("OK"));
+        /**
          *使用泛化调用
          * 在 Spring 配置申明 generic="true"
          */
         GenericService genericService = (GenericService)classPathXmlApplicationContext.getBean("demoService2");
         Object result = genericService.$invoke("sayHello", new String[] { "java.lang.String" }, new Object[] { "World" });
         System.out.println("GenericService======="+result.toString());
+
+
         System.in.read();
     }
 }

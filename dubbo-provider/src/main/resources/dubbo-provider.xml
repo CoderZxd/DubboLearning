@@ -48,8 +48,12 @@
     <!--接口声明-,多协议暴露服务-->
     <!-- 向多个注册中心注册 -->
     <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo,hessian" registry="qingdaoRegistry,hangzhouRegistry"/>-->
-    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo" registry="qingdaoRegistry"/>
+    <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo" registry="qingdaoRegistry"/>-->
+    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="genericService" protocol="dubbo" registry="qingdaoRegistry"/>
 
     <!-- 具体实现该接口的 bean-->
     <bean id="demoServiceImpl" class="com.zxd.dubbo.learning.provider.DemoServiceImpl"/>
+    <bean id="genericService" class="com.zxd.dubbo.learning.provider.MyGenericService"/>
+
+
 </beans>

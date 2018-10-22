@@ -53,6 +53,18 @@
     <!--算法参见：http://en.wikipedia.org/wiki/Consistent_hashing-->
     <!--缺省只对第一个参数 Hash，如果要修改，请配置 <dubbo:parameter key="hash.arguments" value="0,1" />-->
     <!--缺省用 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />-->
-    <!--<dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random"/>-->
-    <dubbo:reference id="demoService" interface="com.zxd.dubbo.learning.api.DemoService" url="dubbo://localhost:20880"/>
+<!--    结果缓存
+
+    结果缓存，用于加速热门数据的访问速度，Dubbo 提供声明式缓存，以减少用户加缓存的工作量。
+
+    缓存类型
+
+    lru 基于最近最少使用原则删除多余缓存，保持最热的数据被缓存。
+    threadlocal 当前线程缓存，比如一个页面渲染，用到很多 portal，每个 portal 都要去查用户信息，通过线程缓存，可以减少这种多余访问。
+    jcache 与 JSR107 集成，可以桥接各种缓存实现-->
+    <!--<dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random" cache="lru"/>-->
+    <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random"/>
+
+    <!--如果是线上需求需要点对点，可在 <dubbo:reference> 中配置 url 指向提供者，将绕过注册中心，多个地址用分号隔开-->
+    <!--<dubbo:reference id="demoService" interface="com.zxd.dubbo.learning.api.DemoService" url="dubbo://localhost:20880"/>-->
 </beans>

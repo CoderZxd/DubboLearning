@@ -18,10 +18,10 @@
     <!--禁用订阅配置-->
     <!--<dubbo:registry id="qdRegistry" address="10.20.141.150:9090" subscribe="false" />-->
     <!--<dubbo:registry id="qdRegistry" address="10.20.141.150:9090?subscribe=false" />-->
-    <dubbo:registry id="qingdaoRegistry" address="zookeeper://localhost:2181" default="true"/>
+    <dubbo:registry id="qingdaoRegistry" address="zookeeper://192.168.33.117:2181" default="true"/>
     <!--多注册中心
     Dubbo 支持同一服务向多注册中心同时注册，或者不同服务分别注册到不同的注册中心上去，甚至可以同时引用注册在不同注册中心上的同名服务。另外，注册中心是支持自定义扩展的-->
-    <dubbo:registry id="hangzhouRegistry" address="zookeeper://localhost:2182"/>
+    <!--<dubbo:registry id="hangzhouRegistry" address="zookeeper://localhost:2182"/>-->
 
     <!--dubbo协议地址-->
     <!-- 用dubbo协议在20880端口暴露服务 -->
@@ -47,7 +47,8 @@
 
     <!--接口声明-,多协议暴露服务-->
     <!-- 向多个注册中心注册 -->
-    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo,hessian" registry="qingdaoRegistry,hangzhouRegistry"/>
+    <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo,hessian" registry="qingdaoRegistry,hangzhouRegistry"/>-->
+    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo,hessian" registry="qingdaoRegistry"/>
 
     <!-- 具体实现该接口的 bean-->
     <bean id="demoServiceImpl" class="com.zxd.dubbo.learning.provider.DemoServiceImpl"/>

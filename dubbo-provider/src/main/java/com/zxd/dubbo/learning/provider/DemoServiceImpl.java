@@ -22,7 +22,6 @@ public class DemoServiceImpl implements DemoService{
      *
      * @param param
      */
-    @Override
     public String sayHello(String param) {
         return "Hello "+param;
     }
@@ -37,7 +36,6 @@ public class DemoServiceImpl implements DemoService{
      *
      * @param param
      */
-    @Override
     public String sayGoodbye(String param) {
         return "Goodbey "+param;
     }

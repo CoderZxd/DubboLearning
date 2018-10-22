@@ -1,5 +1,6 @@
 package com.zxd.dubbo.learning.consumer;
 
+import com.alibaba.dubbo.rpc.service.GenericService;
 import com.zxd.dubbo.learning.api.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,6 +29,11 @@ public class Consumer {
         String returnvalue = demoService.sayHello("CoderZZ");
         System.out.println(returnvalue);
         System.out.println(demoService.sayGoodbye("CoderZZ"));
+
+
+        GenericService genericService = (GenericService)classPathXmlApplicationContext.getBean("demoService");
+        Object result = genericService.$invoke("sayHello", new String[] { "java.lang.String" }, new Object[] { "World" });
+
         System.in.read();
     }
 }

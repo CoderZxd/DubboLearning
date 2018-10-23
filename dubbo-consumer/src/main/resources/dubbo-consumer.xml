@@ -68,8 +68,9 @@
     泛化接口调用方式主要用于客户端没有 API 接口及模型类元的情况，参数及返回值中的所有 POJO 均用 Map 表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过 GenericService 调用所有服务实现。
     通过 Spring 使用泛化调用
     在 Spring 配置申明 generic="true"-->
-    <!--异步调用-->
-    <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random" async="true"/>
+    <!--异步调用 async="true" -->
+    <!--actives="10":每客户端并发执行（或占用连接的请求数）不能超过 10 个-->
+    <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random" async="true" actives="10"/>
     <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService2" retries="2" loadbalance="random" generic="true"/>
     <dubbo:reference id="callbackService" interface="com.zxd.dubbo.learning.api.CallbackService" />
 

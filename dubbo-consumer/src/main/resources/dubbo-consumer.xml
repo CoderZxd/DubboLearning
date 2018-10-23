@@ -71,6 +71,7 @@
     <!--异步调用-->
     <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService" retries="2" loadbalance="random" async="true"/>
     <dubbo:reference interface="com.zxd.dubbo.learning.api.DemoService" id="demoService2" retries="2" loadbalance="random" generic="true"/>
+    <dubbo:reference id="callbackService" interface="com.zxd.dubbo.learning.api.CallbackService" />
 
     <!--如果是线上需求需要点对点，可在 <dubbo:reference> 中配置 url 指向提供者，将绕过注册中心，多个地址用分号隔开-->
     <!--<dubbo:reference id="demoService" interface="com.zxd.dubbo.learning.api.DemoService" url="dubbo://localhost:20880"/>-->

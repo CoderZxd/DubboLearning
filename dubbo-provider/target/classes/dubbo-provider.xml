@@ -56,4 +56,14 @@
     <bean id="genericService" class="com.zxd.dubbo.learning.provider.MyGenericService"/>
 
 
+    <bean id="callbackService" class="com.zxd.dubbo.learning.provider.CallbackServiceImpl" />
+    <dubbo:service interface="com.zxd.dubbo.learning.api.CallbackService" ref="callbackService" connections="1" callbacks="1000">
+        <dubbo:method name="addListener">
+            <dubbo:argument index="1" callback="true" />
+            <!--也可以通过指定类型的方式-->
+            <!--<dubbo:argument type="com.demo.CallbackListener" callback="true" />-->
+        </dubbo:method>
+    </dubbo:service>
+
+
 </beans>

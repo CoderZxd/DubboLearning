@@ -3,6 +3,8 @@ package com.zxd.dubbo.learning.consumer;
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.service.EchoService;
 import com.alibaba.dubbo.rpc.service.GenericService;
+import com.zxd.dubbo.learning.api.CallbackListener;
+import com.zxd.dubbo.learning.api.CallbackService;
 import com.zxd.dubbo.learning.api.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -72,6 +74,17 @@ public class Consumer {
         // 获取当前服务配置信息，所有配置信息都将转换为URL的参数
         String application = RpcContext.getContext().getUrl().getParameter("application");
         System.out.println("application:"+application);
+
+
+
+        CallbackService callbackService = (CallbackService) classPathXmlApplicationContext.getBean("callbackService");
+
+        callbackService.addListener("http://10.20.160.198/wiki/display/dubbo/foo.bar", new CallbackListener(){
+            @Override
+            public void changed(String msg) {
+                System.out.println("callback1:" + msg);
+            }
+        });
 //        System.in.read();
     }
 }

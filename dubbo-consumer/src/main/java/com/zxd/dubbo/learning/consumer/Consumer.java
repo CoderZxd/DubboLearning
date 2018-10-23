@@ -7,6 +7,8 @@ import com.zxd.dubbo.learning.api.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * @author CoderZZ
@@ -18,7 +20,7 @@ import java.io.IOException;
  * @create 2018-10-11 23:28
  **/
 public class Consumer {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         ClassPathXmlApplicationContext classPathXmlApplicationContext =
                 new ClassPathXmlApplicationContext("classpath:dubbo-consumer.xml");
         classPathXmlApplicationContext.start();
@@ -34,13 +36,22 @@ public class Consumer {
         RpcContext.getContext().setAttachment("index","1");
         String returnvalue = demoService.sayHello("CoderZZ");
         System.out.println(returnvalue);
-        System.out.println(demoService.sayGoodbye("CoderZZ"));
-
+        Future<String> stringFuture = RpcContext.getContext().getFuture();
+        returnvalue = stringFuture.get();
+        System.out.println("returnvalue form Future:"+returnvalue);
+        String goodbye = demoService.sayGoodbye("CoderZZ");
+        System.out.println(goodbye);
+        Future<String> goodbyeFuture = RpcContext.getContext().getFuture();
+        goodbye = goodbyeFuture.get();
+        System.out.println("goodbye form Future:"+goodbye);
         /**
          * 回声测试
          */
         EchoService echoService = (EchoService)demoService;
         System.out.println("EchoService:"+echoService.$echo("OK"));
+        Future<Object> objectFuture = RpcContext.getContext().getFuture();
+        Object object = objectFuture.get();
+        System.out.println("EchoService form Future:"+object.toString());
         /**
          *使用泛化调用
          * 在 Spring 配置申明 generic="true"

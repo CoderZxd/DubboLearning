@@ -41,14 +41,19 @@
 
     <!--不同服务不同协议
     不同服务在性能上适用不同协议进行传输，比如大数据用短连接协议，小数据大并发用长连接协议-->
-    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100"/>
+    <!--服务端连接控制-->
+    <!--限制服务器端接受的连接不能超过 10 个：-->
+    <!--accepts="10-->
+    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100" accepts="10"/>
     <!--<dubbo:protocol name="rmi" port="1099" />-->
     <!--<dubbo:protocol name="hessian" port="8080" />-->
 
     <!--接口声明-,多协议暴露服务-->
     <!-- 向多个注册中心注册 -->
     <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo,hessian" registry="qingdaoRegistry,hangzhouRegistry"/>-->
-    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo" registry="qingdaoRegistry"/>
+    <!--并发控制-->
+    <!--executes="10":服务器端并发执行（或占用线程池线程数）不能超过 10 个-->
+    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo" registry="qingdaoRegistry" executes="10"/>
     <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="genericService" protocol="dubbo" registry="qingdaoRegistry"/>-->
 
     <!-- 具体实现该接口的 bean-->
@@ -57,7 +62,9 @@
 
 
     <bean id="callbackService" class="com.zxd.dubbo.learning.provider.CallbackServiceImpl" />
-    <dubbo:service interface="com.zxd.dubbo.learning.api.CallbackService" ref="callbackService" connections="1" callbacks="1000">
+    <!--如果你的服务需要预热时间，比如初始化缓存，等待相关资源就位等，可以使用 delay 进行延迟暴露。-->
+    <!--delay="-1"延迟到 Spring 初始化完成后，再暴露服务-->
+    <dubbo:service interface="com.zxd.dubbo.learning.api.CallbackService" ref="callbackService" connections="1" callbacks="1000" delay="-1">
         <dubbo:method name="addListener">
             <dubbo:argument index="1" callback="true" />
             <!--也可以通过指定类型的方式-->

@@ -24,3 +24,7 @@
 hs_err_pid*
 
 /.idea/
+/DubboLearning.iml
+/dubbo-api/dubbo-api.iml
+/dubbo-consumer/dubbo-consumer.iml
+/dubbo-provider/dubbo-provider.iml

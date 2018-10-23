@@ -21,6 +21,8 @@ public class Provider {
         // anyhost=true&application=dubbo-demo-provider&dubbo=2.5.3&
         // interface=com.zxd.dubbo.learning.api.DemoService&methods=sayHello,sayGoodbye&
         // owner=CoderZZ&pid=6444&side=provider&timestamp=1539276144617
+
+
         System.out.println("Dubbo provider started!");
         // 阻塞当前进程，否则程序会直接停止
         System.in.read();

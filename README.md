@@ -13,3 +13,19 @@
 |\<dubbo:consumer/\>|	消费方配置 |	当 ReferenceConfig 某属性没有配置时，采用此缺省值，可选 |
 |\<dubbo:method/\>|	方法配置 |	用于 ServiceConfig 和 ReferenceConfig 指定方法级的配置信息 |
 |\<dubbo:argument/\>|	参数配置 |	用于指定方法参数配置 |
+
+
+
+端口配置
+
+缺省主机端口与协议相关：
+
+|  协议 |  端口 |
+|--------|--------|
+|dubbo |	20880 |
+|rmi |	1099 |
+|http |	80 |
+|hessian |	80 |
+|webservice |	80 |
+|memcached |	11211 |
+|redis |	6379 |

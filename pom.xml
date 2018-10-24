@@ -12,6 +12,7 @@
         <module>dubbo-api</module>
         <module>dubbo-consumer</module>
         <module>dubbo-provider</module>
+        <module>RpcFramework-Demo</module>
     </modules>
 
     <name>DubboLearning</name>

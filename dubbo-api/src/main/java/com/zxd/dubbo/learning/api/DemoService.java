@@ -31,4 +31,6 @@ public interface DemoService {
      * creat_time: 0:27
      **/
     String sayGoodbye(String param);
+
+    Person getPerson(String name);
 }

@@ -2,6 +2,7 @@ package com.zxd.dubbo.learning.consumer;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.zxd.dubbo.learning.api.DemoService;
+import com.zxd.dubbo.learning.api.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -31,8 +32,8 @@ public class Consumer2 {
         //隐式参数
         //注意：path, group, version, dubbo, token, timeout 几个 key 是保留字段，请使用其它值
         RpcContext.getContext().setAttachment("index","1");
-        String returnvalue = demoService.sayHello("CoderZZ");
-        System.out.println(returnvalue);
+        Person person = demoService.getPerson("CoderZZ");
+        System.out.println("person.getName():"+person.getName());
 //        System.in.read();
     }
 }

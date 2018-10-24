@@ -53,7 +53,7 @@
     <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo,hessian" registry="qingdaoRegistry,hangzhouRegistry"/>-->
     <!--并发控制-->
     <!--executes="10":服务器端并发执行（或占用线程池线程数）不能超过 10 个-->
-    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo" registry="qingdaoRegistry" executes="10"/>
+    <dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="demoServiceImpl" protocol="dubbo" registry="qingdaoRegistry" executes="10" timeout="60000"/>
     <!--<dubbo:service interface="com.zxd.dubbo.learning.api.DemoService" ref="genericService" protocol="dubbo" registry="qingdaoRegistry"/>-->
 
     <!-- 具体实现该接口的 bean-->

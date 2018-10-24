@@ -2,6 +2,7 @@ package com.zxd.dubbo.learning.provider;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.zxd.dubbo.learning.api.DemoService;
+import com.zxd.dubbo.learning.api.Person;
 
 /**
  * @author CoderZZ
@@ -52,5 +53,9 @@ public class DemoServiceImpl implements DemoService{
      */
     public String sayGoodbye(String param) {
         return "Goodbey "+param;
+    }
+
+    public Person getPerson(String name) {
+        return new Person("CoderZZ");
     }
 }

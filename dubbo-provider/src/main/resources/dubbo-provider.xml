@@ -44,7 +44,9 @@
     <!--服务端连接控制-->
     <!--限制服务器端接受的连接不能超过 10 个：-->
     <!--accepts="10-->
-    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100" accepts="10"/>
+    <!--状态检查扩展-->
+    <!--http://dubbo.apache.org/zh-cn/docs/dev/impls/status-checker.html-->
+    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100" accepts="10" status="test"/>
     <!--<dubbo:protocol name="rmi" port="1099" />-->
     <!--<dubbo:protocol name="hessian" port="8080" />-->
 
@@ -59,7 +61,6 @@
     <!-- 具体实现该接口的 bean-->
     <bean id="demoServiceImpl" class="com.zxd.dubbo.learning.provider.DemoServiceImpl"/>
     <bean id="genericService" class="com.zxd.dubbo.learning.provider.MyGenericService"/>
-
 
     <bean id="callbackService" class="com.zxd.dubbo.learning.provider.CallbackServiceImpl" />
     <!--如果你的服务需要预热时间，比如初始化缓存，等待相关资源就位等，可以使用 delay 进行延迟暴露。-->

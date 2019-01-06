@@ -20,7 +20,7 @@ public class MyGenericService implements GenericService{
      * @return 返回值
      * @throws Throwable 方法抛出的异常
      */
-    @Override
+
     public Object $invoke(String method, String[] parameterTypes, Object[] args) throws GenericException {
         if ("sayHello".equals(method)) {
             return "MyGenericService sayHello " + args[0];

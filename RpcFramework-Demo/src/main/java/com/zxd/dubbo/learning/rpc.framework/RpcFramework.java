@@ -39,7 +39,7 @@ public class RpcFramework {
         ServerSocket serverSocket = new ServerSocket(port);
         while (true){
             try {
-                Socket socket = serverSocket.accept();
+                final Socket socket = serverSocket.accept();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

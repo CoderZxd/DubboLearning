@@ -34,6 +34,9 @@ public class Consumer2 {
         RpcContext.getContext().setAttachment("index","1");
         Person person = demoService.getPerson("CoderZZ");
         System.out.println("person.getName():"+person.getName());
+        RpcContext.getContext().setAttachment("index","2");
+        String rt = demoService.sayHello("world");
+        System.out.println(rt);
 //        System.in.read();
     }
 }

@@ -56,6 +56,8 @@ public class DemoServiceImpl implements DemoService{
     }
 
     public Person getPerson(String name) {
+        String index = RpcContext.getContext().getAttachment("index");
+        System.out.println("getPerson():getAttachment index:"+index);
         return new Person("CoderZZ");
     }
 }

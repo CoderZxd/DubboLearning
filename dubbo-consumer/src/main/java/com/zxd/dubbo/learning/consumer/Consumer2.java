@@ -2,7 +2,6 @@ package com.zxd.dubbo.learning.consumer;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.zxd.dubbo.learning.api.DemoService;
-import com.zxd.dubbo.learning.api.Person;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class Consumer2 {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         ClassPathXmlApplicationContext classPathXmlApplicationContext =
                 new ClassPathXmlApplicationContext("classpath:dubbo-consumer2.xml");
-        classPathXmlApplicationContext.start();
+//        classPathXmlApplicationContext.start();
         //consumer://172.20.10.4/com.zxd.dubbo.learning.api.DemoService?
         // application=dubbo-demo-consumer&category=consumers&check=false&
         // dubbo=2.5.3&interface=com.zxd.dubbo.learning.api.DemoService&
@@ -31,9 +30,9 @@ public class Consumer2 {
         DemoService demoService = classPathXmlApplicationContext.getBean("demoService",DemoService.class);
         //隐式参数
         //注意：path, group, version, dubbo, token, timeout 几个 key 是保留字段，请使用其它值
-        RpcContext.getContext().setAttachment("index","1");
-        Person person = demoService.getPerson("CoderZZ");
-        System.out.println("person.getName():"+person.getName());
+//        RpcContext.getContext().setAttachment("index","1");
+//        Person person = demoService.getPerson("CoderZZ");
+//        System.out.println("person.getName():"+person.getName());
         RpcContext.getContext().setAttachment("index","2");
         String rt = demoService.sayHello("world");
         System.out.println(rt);
